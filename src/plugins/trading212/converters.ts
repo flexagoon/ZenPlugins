@@ -38,7 +38,7 @@ function convertTransaction (op: ExportOperation, accountId: string, cardId: str
   const transactions: Transaction[] = [
     {
       hold: false,
-      date: new Date(op.Time),
+      date: new Date(op['Time (UTC)']),
       movements: [{
         id: op.ID,
         account: { id: isCardTransaction ? cardId : accountId },
@@ -64,7 +64,7 @@ function convertTransaction (op: ExportOperation, accountId: string, cardId: str
     if (roundUpAmount > 0) {
       transactions.push({
         hold: false,
-        date: new Date(op.Time),
+        date: new Date(op['Time (UTC)']),
         movements: [
           {
             id: null,
